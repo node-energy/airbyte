@@ -1,0 +1,25 @@
+data:
+  allowedHosts:
+    hosts:
+      - TODO # Please change to the hostname of the source.
+  registries:
+    oss:
+      enabled: false
+    cloud:
+      enabled: false
+  connectorSubtype: api
+  connectorType: source
+  definitionId: e6b8737b-0630-4c7a-bf3c-6d153b6dd364
+  dockerImageTag: 0.1.0
+  dockerRepository: airbyte/source-hubspot-associations
+  githubIssueLabel: source-hubspot-associations
+  icon: hubspot-associations-2.svg
+  license: MIT
+  name: Hubspot Associations 2
+  releaseDate: TODO
+  supportLevel: community
+  releaseStage: alpha
+  documentationUrl: https://docs.airbyte.com/integrations/sources/hubspot-associations-2
+  tags:
+    - language:python
+metadataSpecVersion: "1.0"
