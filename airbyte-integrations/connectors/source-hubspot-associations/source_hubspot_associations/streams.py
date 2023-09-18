@@ -1240,7 +1240,6 @@ class CRMObjectIncrementalStream(CRMObjectStream, IncrementalStream):
             stream_state=stream_state,
         )
         yield from self._flat_associations(records)
-        #yield records
 
 class Campaigns(ClientSideIncrementalStream):
     """Email campaigns, API v1
