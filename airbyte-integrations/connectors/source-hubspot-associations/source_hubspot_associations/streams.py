@@ -1951,7 +1951,7 @@ class Tickets(CRMSearchStream):
 
 class CustomObject(CRMSearchStream, ABC):
     last_modified_field = "hs_lastmodifieddate"
-    associations = []
+    associations = ['contacts', 'companies', 'deals', 'line_items']
     primary_key = "id"
     scopes = {"crm.schemas.custom.read", "crm.objects.custom.read"}
 
@@ -1966,7 +1966,17 @@ class CustomObject(CRMSearchStream, ABC):
         return self.entity
 
     def get_json_schema(self) -> Mapping[str, Any]:
-        return self.schema
+        json_schema = self.schema
+        for association in self.associations:
+            json_schema["properties"][association] = {
+                "type": ["null", "array"],
+                "items": {
+                    "type": ["null", "object"],
+                    "additionalProperties": True,
+                    "readOnly": True
+                }
+            }
+        return json_schema
 
     @property
     def properties(self) -> Mapping[str, Any]:
